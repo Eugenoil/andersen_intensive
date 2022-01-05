@@ -1,17 +1,21 @@
 package by.dunin.implementation;
 
+import by.dunin.comparator.ObjectComparator;
 import by.dunin.interfaces.MyArrayList;
+import by.dunin.sort.AdvancedQuickSort;
+
+import java.util.Arrays;
 
 public class MyArrayListImpl<E> implements MyArrayList<E> {
 
     private E[] values;
 
     public MyArrayListImpl() {
-        values = (E[]) new Object[0];
+        values = (E[]) new Object[0];//Initiating empty array
     }
 
     @Override
-    public void add(E e) { // We add new element to our ArrayList
+    public void add(E e) { //Adding new element to our ArrayList
         try {
             E[] temp = values; //Create temporary array that is copy of "values"
             values = (E[]) new Object[temp.length + 1]; //Create new array that bigger than previous
@@ -65,4 +69,18 @@ public class MyArrayListImpl<E> implements MyArrayList<E> {
         return index;
     }
 
+    @Override
+    public void sort(MyArrayList<E> arrayList) {
+        AdvancedQuickSort<E> advancedQuickSort = new AdvancedQuickSort<>();
+        advancedQuickSort.qsort(arrayList, 0, arrayList.getSize() - 1, new ObjectComparator());
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "MyArrayListImpl{" +
+                "values=" + Arrays.toString(values) +
+                '}';
+    }
 }

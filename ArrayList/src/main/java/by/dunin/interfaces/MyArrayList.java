@@ -13,4 +13,6 @@ public interface MyArrayList<E>{
 
     int getIndexOf(E value);
 
+    void sort(MyArrayList<E> myArrayList);
+
 }
